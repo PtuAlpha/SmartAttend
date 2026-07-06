@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SmartAttend — Wireframes</title>
+<style>
+  :root{
+    --line:#8a8a8a;
+    --line-light:#c9c9c9;
+    --bg:#ffffff;
+    --panel:#f3f3f3;
+    --text:#2b2b2b;
+    --muted:#8a8a8a;
+    --accent:#5a5a5a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:'Segoe UI', Arial, sans-serif;
+    background:#e9e9e9;
+    color:var(--text);
+    margin:0;
+    padding:32px;
+  }
+  h1{
+    font-size:20px;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color:var(--accent);
+    border-bottom:2px solid var(--line);
+    padding-bottom:10px;
+    margin-bottom:28px;
+  }
+  .nav{
+    display:flex;
+    gap:8px;
+    margin-bottom:28px;
+    flex-wrap:wrap;
+  }
+  .nav button{
+    font-family:inherit;
+    font-size:13px;
+    padding:8px 16px;
+    background:#fff;
+    border:1px solid var(--line);
+    cursor:pointer;
+    color:var(--text);
+  }
+  .nav button.active{
+    background:var(--accent);
+    color:#fff;
+  }
+  .screen{
+    display:none;
+    background:var(--bg);
+    border:1px solid var(--line);
+    max-width:900px;
+    margin:0 auto;
+  }
+  .screen.active{display:block;}
+  .screen-label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:var(--muted);
+    text-align:center;
+    padding:6px;
+    border-bottom:1px dashed var(--line-light);
+  }
+  .frame{padding:24px;}
+
+  /* generic wireframe elements */
+  .box{
+    border:1px dashed var(--line);
+    background:var(--panel);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--muted);
+    font-size:12px;
+    text-align:center;
+  }
+  .field{
+    border:1px solid var(--line);
+    background:#fff;
+    padding:10px;
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:12px;
+  }
+  .btn{
+    border:1px solid var(--accent);
+    background:#fff;
+    color:var(--accent);
+    padding:10px 20px;
+    font-size:13px;
+    text-align:center;
+    display:inline-block;
+    cursor:default;
+  }
+  .btn.solid{
+    background:var(--accent);
+    color:#fff;
+  }
+  .row{display:flex;gap:16px;}
+  .col{flex:1;}
+  .logo-block{
+    width:64px;height:64px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    margin:0 auto 16px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:10px;color:var(--muted);
+  }
+  table{width:100%;border-collapse:collapse;font-size:12px;}
+  th,td{border:1px solid var(--line-light);padding:8px;text-align:left;}
+  th{background:var(--panel);color:var(--accent);}
+  .status-dot{
+    width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px;
+    background:var(--muted);
+  }
+  .sidebar{
+    width:160px;
+    border-right:1px solid var(--line-light);
+    padding:16px;
+  }
+  .sidebar .item{
+    padding:10px 8px;
+    font-size:12px;
+    color:var(--muted);
+    border-bottom:1px dashed var(--line-light);
+  }
+  .sidebar .item.active{color:var(--text);font-weight:bold;}
+  .topbar{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:12px 20px;
+    border-bottom:1px solid var(--line-light);
+    font-size:13px;
+  }
+  .layout{display:flex;}
+  .content{flex:1;padding:20px;}
+  .card{
+    border:1px solid var(--line-light);
+    padding:16px;
+    margin-bottom:16px;
+  }
+  .card h3{margin:0 0 12px 0;font-size:13px;color:var(--accent);text-transform:uppercase;letter-spacing:0.5px;}
+  .stat{
+    border:1px solid var(--line-light);
+    flex:1;
+    padding:16px;
+    text-align:center;
+  }
+  .stat .num{font-size:26px;color:var(--accent);}
+  .stat .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;}
+</style>
+</head>
+<body>
+
+<h1>SmartAttend — Low-Fidelity Wireframes</h1>
+
+<div class="nav">
+  <button class="active" onclick="show(0,this)">1. NFC Kiosk (No Login)</button>
+  <button onclick="show(1,this)">2. Portal Login</button>
+  <button onclick="show(2,this)">3. Student Portal</button>
+  <button onclick="show(3,this)">4. Lecturer Dashboard</button>
+  <button onclick="show(4,this)">5. Admin Panel</button>
+</div>
+<p style="max-width:900px;margin:0 auto 20px;font-size:12px;color:var(--muted);line-height:1.5;">
+  <strong>Note:</strong> Screens 1 and 2 are intentionally separate flows. The <strong>NFC Kiosk</strong> (Screen 1) is the physical attendance-capture device at the classroom door — students just tap their card, no login required. The <strong>Portal Login</strong> (Screen 2) is only for people accessing the web dashboards (viewing history, monitoring live sessions, managing users) — a different context, on a browser or phone.
+</p>
+
+<!-- SCREEN 1: NFC KIOSK (NO LOGIN) -->
+<div class="screen active" id="s0">
+  <div class="screen-label">Screen 1 — NFC Kiosk / Reader Display (No Login — Physical Tap Only)</div>
+  <div class="frame" style="max-width:320px;margin:0 auto;text-align:center;">
+    <div style="font-size:13px;color:var(--muted);margin-bottom:6px;">COS 301 — Software Engineering</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:20px;">Room IT4-1 &nbsp;|&nbsp; 08:00 – 09:00</div>
+    <div class="box" style="width:140px;height:140px;border-radius:50%;margin:0 auto 20px;font-size:12px;">
+      NFC ICON<br>Tap Card Here
+    </div>
+    <div class="box" style="height:70px;">
+      Status: Waiting for tap...
+    </div>
+    <div style="font-size:10px;color:var(--muted);margin-top:16px;">
+      No login. No app. Tap your student card to register attendance.
+    </div>
+  </div>
+  <div class="frame" style="max-width:320px;margin:20px auto 0;text-align:center;border-top:1px dashed var(--line-light);padding-top:16px;">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Example confirmation state after a successful tap:</div>
+    <div class="box" style="height:90px;">
+      ✓ Welcome, T. Mokoena<br>Checked in at 08:04:12
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 2: PORTAL LOGIN -->
+<div class="screen" id="s1">
+  <div class="screen-label">Screen 2 — Portal Login (Lecturer / Admin / IT Support / Student — Web/App Access Only)</div>
+  <div class="frame" style="max-width:360px;margin:0 auto;">
+    <div class="logo-block">LOGO</div>
+    <div style="text-align:center;font-size:16px;margin-bottom:20px;">SmartAttend Portal</div>
+    <div class="field">Email / Student Number</div>
+    <div class="field">Password</div>
+    <div class="btn solid" style="width:100%;text-align:center;margin-bottom:10px;">Log In</div>
+    <div style="text-align:center;font-size:11px;color:var(--muted);">Forgot password?</div>
+    <div class="box" style="height:1px;margin:16px 0;border:none;border-top:1px dashed var(--line-light);"></div>
+    <div style="text-align:center;font-size:11px;color:var(--muted);">Role auto-detected: Student / Lecturer / Admin / IT Support</div>
+  </div>
+</div>
+
+<!-- SCREEN 3: STUDENT PORTAL -->
+<div class="screen" id="s2">
+  <div class="screen-label">Screen 3 — Student Portal (Attendance History)</div>
+  <div class="topbar">
+    <div>SmartAttend</div>
+    <div>Thabo M. | Log out</div>
+  </div>
+  <div class="frame">
+    <div class="row" style="margin-bottom:20px;">
+      <div class="stat"><div class="num">92%</div><div class="lbl">Overall Attendance</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Courses Enrolled</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Missed Sessions</div></div>
+    </div>
+    <div class="card">
+      <h3>Attendance History</h3>
+      <table>
+        <tr><th>Date</th><th>Course</th><th>Time</th><th>Status</th></tr>
+        <tr><td>2026-07-01</td><td>COS 301</td><td>08:00</td><td><span class="status-dot"></span>Present</td></tr>
+        <tr><td>2026-06-29</td><td>STK 210</td><td>10:00</td><td><span class="status-dot"></span>Present</td></tr>
+        <tr><td>2026-06-28</td><td>COS 301</td><td>08:00</td><td><span class="status-dot"></span>Absent</td></tr>
+        <tr><td>2026-06-24</td><td>INF 220</td><td>13:00</td><td><span class="status-dot"></span>Present</td></tr>
+      </table>
+    </div>
+    <div class="box" style="height:60px;">[ Filter by Course / Date Range ]</div>
+  </div>
+</div>
+
+<!-- SCREEN 3: LECTURER DASHBOARD -->
+<div class="screen" id="s3">
+  <div class="screen-label">Screen 4 — Lecturer Real-Time Dashboard</div>
+  <div class="topbar">
+    <div>SmartAttend</div>
+    <div>Dr. N. Dlamini | Log out</div>
+  </div>
+  <div class="layout">
+    <div class="sidebar">
+      <div class="item active">Live Session</div>
+      <div class="item">My Courses</div>
+      <div class="item">Reports</div>
+      <div class="item">Settings</div>
+    </div>
+    <div class="content">
+      <div class="row" style="margin-bottom:16px;">
+        <div class="col">
+          <div class="box" style="height:40px;">COS 301 — Software Engineering | Room IT4-1 | Live ●</div>
+        </div>
+      </div>
+      <div class="row" style="margin-bottom:20px;">
+        <div class="stat"><div class="num">47 / 60</div><div class="lbl">Checked In</div></div>
+        <div class="stat"><div class="num">2</div><div class="lbl">Flagged (Proxy)</div></div>
+        <div class="stat"><div class="num">08:04</div><div class="lbl">Session Started</div></div>
+      </div>
+      <div class="card">
+        <h3>Live Check-In Feed</h3>
+        <table>
+          <tr><th>Time</th><th>Student</th><th>Student ID</th><th>Status</th></tr>
+          <tr><td>08:04:12</td><td>K. Naidoo</td><td>u21345678</td><td><span class="status-dot"></span>Checked In</td></tr>
+          <tr><td>08:04:09</td><td>L. van Wyk</td><td>u21987654</td><td><span class="status-dot"></span>Checked In</td></tr>
+          <tr><td>08:03:58</td><td>M. Sithole</td><td>u21456123</td><td>⚠ Flagged — Duplicate Tap</td></tr>
+        </table>
+      </div>
+      <div class="btn">End Session &amp; Export Report</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 4: ADMIN PANEL -->
+<div class="screen" id="s4">
+  <div class="screen-label">Screen 5 — Admin Management Panel</div>
+  <div class="topbar">
+    <div>SmartAttend</div>
+    <div>Admin | Log out</div>
+  </div>
+  <div class="layout">
+    <div class="sidebar">
+      <div class="item active">Users</div>
+      <div class="item">Courses &amp; Classes</div>
+      <div class="item">NFC Devices</div>
+      <div class="item">Analytics &amp; Reports</div>
+    </div>
+    <div class="content">
+      <div class="row" style="margin-bottom:16px;justify-content:space-between;">
+        <div class="field" style="flex:1;margin-bottom:0;">Search users...</div>
+        <div class="btn solid" style="margin-left:12px;">+ Add User</div>
+      </div>
+      <div class="card">
+        <h3>User Management</h3>
+        <table>
+          <tr><th>Name</th><th>Role</th><th>Email</th><th>Status</th><th>Actions</th></tr>
+          <tr><td>Dr. N. Dlamini</td><td>Lecturer</td><td>n.dlamini@uni.ac</td><td>Active</td><td>Edit | Disable</td></tr>
+          <tr><td>T. Mokoena</td><td>Student</td><td>u21345678@uni.ac</td><td>Active</td><td>Edit | Disable</td></tr>
+          <tr><td>P. Naicker</td><td>IT Support</td><td>p.naicker@uni.ac</td><td>Active</td><td>Edit | Disable</td></tr>
+        </table>
+      </div>
+      <div class="row">
+        <div class="stat"><div class="num">2,340</div><div class="lbl">Total Students</div></div>
+        <div class="stat"><div class="num">86</div><div class="lbl">Lecturers</div></div>
+        <div class="stat"><div class="num">12</div><div class="lbl">NFC Devices Online</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function show(i, btn){
+  document.querySelectorAll('.screen').forEach((s,idx)=> s.classList.toggle('active', idx===i));
+  document.querySelectorAll('.nav button').forEach(b=> b.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>
+
+</body>
+</html>
