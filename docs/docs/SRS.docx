@@ -1,0 +1,15 @@
+Functional Requirements
+FR1: System shall allow student identification via NFC card
+FR2: System shall record attendance automatically
+FR3: System shall prevent duplicate attendance entries
+FR4: System shall allow lecturers to view attendance reports
+FR5: System shall allow administrators to manage users
+FR6: System shall store attendance history
+FR7: System shall generate attendance reports
+
+Non-Functional Requirements
+Security: Only authenticated users can access system
+Performance: Attendance must be recorded within 2 seconds
+Reliability: System must operate during lecture hours without failure
+Usability: Interface must be simple and user-friendly
+Scalability: System must support multiple faculties
